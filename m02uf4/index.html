@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html>
+<head><title>TFFHD</title>
+</head>
+
+<body>
+<h1>TFFHD</h1>
+
+<main>
+<section id="characters">
+	<ul id = "characters-list">
+
+	</ul>
+</section>
+
+<section id="items">
+	<ul id = "items-list">
+
+	</ul>
+</section>
+
+</main>
+
+<script>
+
+function characterlist(data)
+{
+	let list = "";
+	for (let i = 0; i < data.length; i++){
+		list += "<li>"+data[i].name+"</li>";
+	}
+
+	document.getElementById("characters-list").innerHTML = list;
+}
+
+function itemlist(data)
+{
+	let list = "";
+	for (let i = 0; i < data.length; i++){
+		list += "<li>"+data[i].name+"</li>";
+	}
+
+	document.getElementById("items-list").innerHTML = list;
+}
+
+let char_interval = setInterval(function(){
+	fetch("/characters")
+		.then(response => response.json())
+		.then(data => characterlist(data));
+	}, 2000);
+
+let item_interval = setInterval(function(){
+	fetch("/characters")
+		.then(response => response.json())
+		.then(data => characterlist(data));
+	}, 2000);
+let characters_interval1 = setInterval(function(){
+
+	fetch("/characters")
+		.then(response => response.json())
+		.then(data => characterlist(data));
+
+},2000);
+let items_interval1 = setInterval(function(){
+    fetch("/items")
+		.then(response => response.json())
+		.then(data => itemlist(data));
+},2000);
+</script>
+
+</body>
+</html>
+	
