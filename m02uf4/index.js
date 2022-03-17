@@ -44,6 +44,22 @@ http.createServer(function (request, response){
 		let characters_string = JSON.stringify(data);
 		response.end(characters_string);
 	});
+let col = "";
+	if (request.url == "/characters")
+		col = "characters";
+	else if (request.url == "/items")
+		col = "items";
+	else{
+		response.end();
+		return;
+	}
+
+	let col_data = db.collection(col).find();
+
+	col_data.toArray(function(err, data){
+		let string = JSON.stringify(data);
+		response.end(string);
+	});
 
 
 }).listen(1095);

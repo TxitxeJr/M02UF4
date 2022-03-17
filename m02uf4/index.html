@@ -51,7 +51,7 @@ let char_interval = setInterval(function(){
 	}, 2000);
 
 let item_interval = setInterval(function(){
-	fetch("/characters")
+	fetch("/items")
 		.then(response => response.json())
 		.then(data => characterlist(data));
 	}, 2000);
