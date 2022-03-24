@@ -28,7 +28,7 @@ function characterlist(data)
 {
 	let list = "";
 	for (let i = 0; i < data.length; i++){
-		list += "<li>"+data[i].name+"</li>";
+		list += '<li><a href="/characters/'+data[i]._id+'">'+data[i].name+'</a></li>';
 	}
 
 	document.getElementById("characters-list").innerHTML = list;
@@ -38,7 +38,7 @@ function itemlist(data)
 {
 	let list = "";
 	for (let i = 0; i < data.length; i++){
-		list += "<li>"+data[i].name+"</li>";
+		list += '<li><a href="/items/'+data[i]._id+'">'+data[i].name+'</a></li>';
 	}
 
 	document.getElementById("items-list").innerHTML = list;
@@ -53,20 +53,9 @@ let char_interval = setInterval(function(){
 let item_interval = setInterval(function(){
 	fetch("/items")
 		.then(response => response.json())
-		.then(data => characterlist(data));
-	}, 2000);
-let characters_interval1 = setInterval(function(){
-
-	fetch("/characters")
-		.then(response => response.json())
-		.then(data => characterlist(data));
-
-},2000);
-let items_interval1 = setInterval(function(){
-    fetch("/items")
-		.then(response => response.json())
 		.then(data => itemlist(data));
-},2000);
+	}, 2000);
+
 </script>
 
 </body>
